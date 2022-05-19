@@ -15,7 +15,7 @@
   <h4>horizontalAlignment</h4>
  
   
- Row 
+ <h3>Row</h3> 
  - horizontalArrangement
  - verticalAlignment
   
