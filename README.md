@@ -1,13 +1,5 @@
 # Jetpack-Compose-Tutorial
 
-<img src="https://velog.velcdn.com/images/workspace/post/242af9e8-77be-432f-b1f3-71eff291b781/android-jetpack-header.png" width="500" height ="300"/>
-
-
-
-
-
-
-
 
 <h2><First Commit></h2>
   
