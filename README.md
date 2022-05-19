@@ -8,14 +8,14 @@
   <li>Arrangement.Top</li>
   <li>Arrangement.Center</li>
   <li>Arrangement.Bottom</li>
-  li> Arrangement.SpaceBetween</li>
+  <li> Arrangement.SpaceBetween</li>
   <li>Arrangement.SpaceAround</li>
   <li>Arrangement.SpaceEvenly</li>
   
   <h4>horizontalAlignment</h4>
  
   
- Row 
- - horizontalArrangement
- - verticalAlignment
+  <h2>Row</h2><br>
+  <li>horizontalArrangement</li>
+  <li> verticalAlignment</li>
   
