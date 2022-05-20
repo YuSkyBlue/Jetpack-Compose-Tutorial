@@ -1,63 +1,87 @@
 package com.example.jetpack_compose_tutorial
 
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
+
+
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.jetpack_compose_tutorial.ui.theme.JetpackComposeTutorialTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val fontFamily = FontFamily(
+            Font(R.font.notosanskr_bold, FontWeight.Thin)
+        )
+
         setContent {
-           Column(
-               modifier = Modifier
-                   .background(Color.Green)
-                   .fillMaxHeight(0.5f)
-                   .fillMaxWidth()
-                   .border(5.dp,Color.Magenta)
-                   .padding(5.dp)
-                   .border(5.dp, Color.Blue)
-                   .padding(5.dp)
-                   .border(10.dp, Color.Red)
-                   .padding(10.dp)
-//                   .requiredWidth(600.dp)
-           ) {
-               Text(text = "Hello" , modifier = Modifier
-                   .border(5.dp , Color.Yellow)
-                   .padding(5.dp)
-                   .offset(20.dp,20.dp)
-                   .border(5.dp , Color.Black)
-                   .padding(10.dp)
-                   )
-               Spacer(modifier = Modifier.height(50.dp))
-               Text(text = "World")
-           }
-           }
-    }
-}
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color(0xFF101010))
+            ) {
+                Text(
+                    text = buildAnnotatedString {
+                        withStyle(
+                            style = SpanStyle(
+                                color = Color.Green,
+                                fontSize = 50.sp
+                            )
+                        ) {
+                           append("J")
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
+                        }
+                        append("etpack ")
+                        withStyle(
+                            style = SpanStyle(
+                                color = Color.Green,
+                                fontSize = 50.sp
+                            )
+                        ) {
+                            append("C")
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    JetpackComposeTutorialTheme {
-        Text(text = "Hello")
-        Text(text = "world")
+                        }
+                        append("ompose")
+                    },
+                    color = Color.White,
+                    fontSize = 30.sp,
+                    fontFamily = fontFamily,
+                    textAlign = TextAlign.Center,
+                    textDecoration = TextDecoration.Underline
+                )
+
+            }
+        }
     }
 }
