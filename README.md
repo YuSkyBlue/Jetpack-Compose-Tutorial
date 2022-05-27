@@ -52,3 +52,51 @@
 <li>itemsIndex / items</li>
 <li>why have to use LazyColumn</li>
 <li>scrollState</li>
+
+<h2>🍎7 Chapter</h2>
+<li>ConstrainSet ex) greenBox / redBox</li>
+<li>createHorizontalChain </li>
+<li>ConstrainLayout( constrainst, modifier= ~~)</li>
+~~~kotlin
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setContent {
+            val constraints = ConstraintSet {
+                val greenBox = createRefFor("greenBox")
+                val redBox = createRefFor("redBox")
+//                val guildline= createGuidelineFromTop(0.5f)
+
+                constrain(greenBox) {
+//                    top.linkTo(guildline)
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+
+                    width = Dimension.value(100.dp)
+                    height = Dimension.value(100.dp)
+                }
+                constrain(redBox) {
+                    top.linkTo(parent.top)
+                    start.linkTo(greenBox.end)
+                    end.linkTo(parent.end)
+                    width = Dimension.value(100.dp)
+                    height = Dimension.value(100.dp)
+                }
+                createHorizontalChain( greenBox, redBox, chainStyle = ChainStyle.Packed)
+
+            }
+            ConstraintLayout(constraints, modifier = Modifier.fillMaxWidth()){
+                Box(modifier = Modifier
+                    .background(Color.Green)
+                    .layoutId("greenBox"))
+                Box(modifier = Modifier
+                    .background(Color.Red)
+                    .layoutId("redBox"))
+
+            }
+        }
+    }
+}
+
+~~~
