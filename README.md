@@ -47,3 +47,8 @@
 <li>onValueChange</li>
 <li>scafooldState / append</li>
 <li>showSnackbar</li>
+
+<h2>🍎6 Chapter</h2>
+<li>itemsIndex / items</li>
+<li>why have to use LazyColumn</li>
+<li>scrollState</li>
