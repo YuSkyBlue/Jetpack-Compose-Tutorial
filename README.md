@@ -57,6 +57,7 @@
 <li>ConstrainSet ex) greenBox / redBox</li>
 <li>createHorizontalChain </li>
 <li>ConstrainLayout( constrainst, modifier= ~~)</li>
+
 ~~~kotlin
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -98,5 +99,4 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 ~~~
