@@ -153,8 +153,8 @@ class MainActivity : ComponentActivity() {
 
 <h2>🍎9 Chapter</h2>
 <li>animationDpAsState</li>
-<li>animationSeec / infiniteRepeatable / repeatMode = RepearMode.Reverse </li>
-<li>ConstrainLayout( constrainst, modifier= ~~)</li>
+<li>drawArc / LaunchedEffect </li>
+
 
 ~~~kotlin
 class MainActivity : ComponentActivity() {
