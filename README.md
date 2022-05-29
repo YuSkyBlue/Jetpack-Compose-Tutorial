@@ -149,3 +149,76 @@ class MainActivity : ComponentActivity() {
 
 
 ![화면-기록-2022-05-29-오후-4 24 50](https://user-images.githubusercontent.com/70245821/170857191-06339f7c-a1ff-4f91-aa52-8067fa715b79.gif)
+
+
+<h2>🍎9 Chapter</h2>
+<li>animationDpAsState</li>
+<li>animationSeec / infiniteRepeatable / repeatMode = RepearMode.Reverse </li>
+<li>ConstrainLayout( constrainst, modifier= ~~)</li>
+
+~~~kotlin
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState) 
+        setContent {
+            Box(contentAlignment = Alignment.Center,
+                modifier = Modifier.fillMaxSize()
+            ){
+                CircularProgressBar(percentage = 0.8f, number = 100)
+            }
+        }
+    }
+}
+
+@Composable
+fun CircularProgressBar(
+    percentage: Float,
+    number: Int,
+    fontSize: TextUnit = 28.sp,
+    radius: Dp = 50.dp,
+    color: Color = Color.Green,
+    strokeWidth: Dp = 8.dp,
+    animDuration: Int = 2000,
+    animDelay: Int = 0
+) {
+    var animationPlayed by remember {
+        mutableStateOf(false)
+    }
+    var curPercentage = animateFloatAsState(
+        targetValue = if(animationPlayed) percentage else 0f,
+        animationSpec = tween(
+            durationMillis = animDuration,
+            delayMillis = animDelay
+        )
+    )
+    LaunchedEffect(key1 = true){
+        animationPlayed = true
+    }
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.size(radius * 2f)
+    ) {
+        Canvas(modifier = Modifier.size(radius * 2f) )
+        {
+            drawArc(
+                color = color,
+                -90f,
+                360 * curPercentage.value,
+                useCenter = false,
+                style = Stroke(strokeWidth.toPx(), cap = StrokeCap.Round )
+            )
+
+        }
+        Text(
+            text = (curPercentage.value  * number).toInt().toString(),
+            color = Color.Black,
+            fontSize =  fontSize,
+            fontWeight = FontWeight.Bold
+        )
+
+    }
+}
+~~~
+
+![화면-기록-2022-05-29-오후-5 48 40](https://user-images.githubusercontent.com/70245821/170859957-3598521d-1d70-4cf9-8ee9-a303c52c38b5.gif)
+
