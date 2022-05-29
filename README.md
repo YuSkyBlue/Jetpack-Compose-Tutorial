@@ -102,3 +102,50 @@ class MainActivity : ComponentActivity() {
 ~~~
 <img width="331" alt="스크린샷 2022-05-28 오전 12 11 35" src="https://user-images.githubusercontent.com/70245821/170727921-d0d4fb8c-f64c-42b3-b65e-476a8f23a982.png">
 
+<h2>🍎8 Chapter</h2>
+<li>animationDpAsState</li>
+<li>animationSeec / infiniteRepeatable / repeatMode = RepearMode.Reverse </li>
+<li>ConstrainLayout( constrainst, modifier= ~~)</li>
+
+~~~kotlin
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setContent {
+            var sizeState by remember { mutableStateOf(200.dp) }
+            val size by animateDpAsState(
+                targetValue = sizeState,
+                tween(
+                    durationMillis = 1000
+                )
+            )
+            val inifiniteTransition = rememberInfiniteTransition()
+            val color by inifiniteTransition.animateColor(
+                initialValue = Color.Red,
+                targetValue = Color.Green,
+                animationSpec = infiniteRepeatable(
+                    tween(durationMillis = 2000),
+                    repeatMode = RepeatMode.Reverse
+                )
+            )
+
+            Box(
+                modifier = Modifier
+                    .size(size)
+                    .background(color),
+                contentAlignment = Alignment.Center
+            ) {
+                Button(onClick = {
+                    sizeState += 50.dp
+                }) {
+                    Text(text = "Increase Size")
+                }
+            }
+        }
+    }
+}
+~~~
+
+
+![화면-기록-2022-05-29-오후-4 24 50](https://user-images.githubusercontent.com/70245821/170857191-06339f7c-a1ff-4f91-aa52-8067fa715b79.gif)
